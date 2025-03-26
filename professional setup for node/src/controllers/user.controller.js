@@ -115,7 +115,7 @@ export const loginUser = asyncHandler(async (req, res) => {
 
   const loggedIn = await User.findOne(user._id).select(
     "-password -refreshToken"
-  );
+  )
 
   return res
     .status(200)
