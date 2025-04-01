@@ -318,10 +318,18 @@ export const updateUserCoverImage = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, user, "Cover image updated successfully"));
 });
 
-export const getUserChannelDetails = asyncHandler(async(req, res) => {
-  const {username} = req.params
+export const getUserChannelDetails = asyncHandler(async (req, res) => {
+  const { username } = req.params;
 
-  if(!username?.length){
-    throw new ApiError(400, "username is missing")
+  if (!username?.length) {
+    throw new ApiError(400, "username is missing");
   }
-})
+
+  const channel = await User.aggregate([]);
+
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(200, channel[0], "Channel details fetched successfully")
+    );
+});
