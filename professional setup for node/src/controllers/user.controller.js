@@ -400,7 +400,7 @@ export const getWatchHistory = asyncHandler(async (req, res) => {
     {
       $lookup: {
         from: "videos",
-        localField: "watchHistory",  // videos ki id hume watch history me dalni hai or save karni hai as watchHistory
+        localField: "watchHistory", // videos ki id hume watch history me dalni hai or save karni hai as watchHistory
         foreignField: "_id",
         as: "watchHistory",
         pipeline: [
