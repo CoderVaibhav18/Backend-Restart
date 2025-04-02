@@ -400,7 +400,7 @@ export const getWatchHistory = asyncHandler(async (req, res) => {
     {
       $lookup: {
         from: "videos",
-        localField: "watchHistory",
+        localField: "watchHistory",  // videos ki id hume watch history me dalni hai or save karni hai as watchHistory
         foreignField: "_id",
         as: "watchHistory",
         pipeline: [
@@ -408,7 +408,7 @@ export const getWatchHistory = asyncHandler(async (req, res) => {
             $lookup: {
               from: "users",
               localField: "owner",
-              foreignField: "_id",
+              foreignField: "_id", // in sub pipelines, users ki id hume owner me dalni hai our save karni hai owner mai hi
               as: "owner",
               pipeline: [
                 {
